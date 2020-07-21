@@ -11,14 +11,10 @@
      Spring Example Index JSP web page
    </h2>
    <p>
-   This is an example of an index (root) web page, implemented as a Java Server Page.
-   </p>
-   <p>
-   With cached web pages, there's always the concern that we're not seeing the current page, but 
-   a cached version. However, you can check the time and date:
-   </p>
-   <p>
-   Time/Date: ${time}
-   </p>
+   Click link below to proceed.
+   </p>   
+   <div class="d-flex justify-content-center">
+		<a href="traitorList">Go to List</a>
+	</div>
 </body>
 </html>
