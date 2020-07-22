@@ -12,21 +12,31 @@
 	<link rel="stylesheet" type="text/css" href="DataTables/datatables.css">
 	<script type="text/javascript" charset="utf8" src="jquery-3.5.1.min.js"></script>	
 	<script type="text/javascript" charset="utf8" src="DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="childRows.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	
-	<script type="text/javascript">
+<!-- 	<script type="text/javascript">
 		$(document).ready( function () {
 	    	$('#dtResults').DataTable();
 		} );
-	</script>
-	
+	</script> -->
+	<style type="text/css" class="init">
+		td.details-control {
+			background: url('DataTables/DataTables-1.10.21/images/details_open.png') no-repeat center center;
+			cursor: pointer;
+		}
+		tr.shown td.details-control {
+			background: url('DataTables/DataTables-1.10.21/images/details_close.png') no-repeat center center;
+		}
+	</style>
 </head>
 	<body>
 		<div class="container mb-3 mt-3">
 			<table id="dtResults" class="table table-dark table-hover table-bordered dt-responsive" cellspacing="0" width="100%">
 			  <thead>
 			    <tr>
-			      <th>No.</th>
+			      <th></th>
+			      <th>ID</th>
 			      <th>First name</th>
 			      <th>Last name</th>
 			      <th>Street</th>
@@ -37,6 +47,7 @@
 			  <tbody> 
 			  	<c:forEach items="${personlist}" var="person">
 			     <tr>
+			       <td></td>
 			       <td><c:out value="${person.getId()}" /></td>
 			       <td><c:out value="${person.getFirst_name()}" /></td>
 			       <td><c:out value="${person.getLast_name()}" /></td>
