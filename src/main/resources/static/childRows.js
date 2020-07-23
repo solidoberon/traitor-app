@@ -1,12 +1,21 @@
 /* Formatting function for row details - modify as you need */
 function format ( d ) {
     // `d` is the original data object for the row
-    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-        '<tr>'+
+    return '<table id="tree-table'+d.id+'" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+		'<script src="jqueryTreeTable/jquery.treetable.js"></script>'+
+		'<link rel="stylesheet" href="jqueryTreeTable/css/jquery.treetable.css"></script>'+
+        '<tr data-tt-id="'+d.id+'">'+
             '<td>IBAN:</td>'+
             '<td>'+d.iban+'</td>'+
         '</tr>'+
-    '</table>';
+		'<tr data-tt-id="2" data-tt-parent-id="'+d.id+'">'+
+            '<td>Child Node:</td>'+
+            '<td>This is Child Node text.</td>'+
+        '</tr>'+
+    '</table>'+
+	'<script>'+
+	'$("#tree-table'+d.id+'").treetable({ expandable: true });'+
+	'</script>';
 }
  
 $(document).ready(function() {
@@ -16,7 +25,7 @@ $(document).ready(function() {
                 "className":      'details-control',
                 "data":           null,
 				"orderable":      false,
-				"defaultContent": ''                
+				"defaultContent": ''               
             },
             { "data": "id" },
             { "data": "firstname" },
@@ -25,7 +34,7 @@ $(document).ready(function() {
 			{ "data": "university" },
 			{ 
 				"data": "iban",
-				"visible": false 
+				"visible": false,
 			},
         ]
     } );
